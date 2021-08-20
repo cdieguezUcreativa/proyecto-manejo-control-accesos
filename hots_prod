@@ -1,3 +1,3 @@
 [prod]
-prod-ubuntu ansible_host=13.92.29.142 ansible_connection=ssh ansible_ssh_pass=Cdieguez1234 ansible_ssh_user=cdieguez
-prod-centos ansible_host=20.97.216.85 ansible_connection=ssh ansible_ssh_pass=Cdieguez1234 ansible_ssh_user=cdieguez
+prod-ubuntu ansible_host=40.88.128.185 ansible_connection=ssh ansible_ssh_pass=Cdieguez1234 ansible_ssh_user=cdieguez
+prod-centos ansible_host=20.110.12.140 ansible_connection=ssh ansible_ssh_pass=Cdieguez1234 ansible_ssh_user=cdieguez
