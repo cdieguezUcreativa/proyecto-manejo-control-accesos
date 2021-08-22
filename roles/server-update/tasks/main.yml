@@ -1,7 +1,13 @@
-- name: Actualizar servidores
+- name: Actualizar servidores Ubuntu
   apt:
    name: "*"
    state: latest
   become: true
   when: ansible_os_family == "Debian"
-    
+  
+- name: Actualizar servidores CentOs
+  yum:
+   name: "*"
+   state: latest
+  become: true
+  when: ansible_os_family == "RedHat"
