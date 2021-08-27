@@ -1,2 +1,39 @@
----
-# tasks file for config-servers
+- name: Instalando apache httpd on Ubuntu...
+  apt:
+   name: apache2
+   state: present
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: Configuracion firewal ufw on Ubuntu...
+  ufw:
+   state: enabled
+   policy: allow
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: Permitiendo puerto 80 a traves de ufw...
+  ufw:
+   rule: allow
+   port: 80
+   proto: tcp
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: Iniciando firewalld on CentOS...
+  ansible.builtin.command: systemctl start firewalld
+  become: true
+  when: ansible_os_family == "Redhat" 
+
+- name: Permitiendo puerto 8080 a traves de firewalld...
+  firewalld:
+   port: 8080/tcp
+   permanent: yes
+   state: enabled
+  become: true
+  when: ansible_os_family == "RedHat"
+
+- name: Instalando Open JDK 11...
+  ansible.builtin.command: yum install java-11-openjdk-devel -y
+  become: true
+  when: ansible_os_family == "Redhat" 
