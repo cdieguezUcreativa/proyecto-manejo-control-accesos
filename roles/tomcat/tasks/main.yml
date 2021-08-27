@@ -1,2 +1,58 @@
----
-# tasks file for tomcat
+- name: Actualizar Grupo de tomcat...
+  group:
+   name: tomcat
+  become: true
+  when: ansible_os_family == "RedHat"
+
+- name: Crear usuario de tomcat...
+  user:
+   name: tomcat
+   group: tomcat
+   home: /usr/share/tomcat
+   createhome: no
+   system: yes
+  become: true
+  when: ansible_os_family == "RedHat"
+
+- name: Descargar tomcat...
+  get_url:
+   url: "{{ tomcat_archive_url }}"
+   dest: "{{ tomcat_archive_dest }}"
+   home: /usr/share/tomcat
+  become: true
+  when: ansible_os_family == "RedHat"
+
+- name: Crear directorio de tomcat...
+  file:
+   path: /usr/share/tomcat
+   state: directory
+   owner: tomcat
+   group: tomcat
+  become: true
+  when: ansible_os_family == "RedHat"
+
+- name: Extraer tomcat...
+  unarchive:
+   src: "{{ tomcat_archive_dest }}"
+   dest: /usr/share/tomcat
+   owner: tomcat
+   group: tomcat
+   remote_src: yes
+   extra_opts: "--strip-components=1"
+   creates: /usr/share/tomcat/bin
+  become: true
+  when: ansible_os_family == "RedHat"
+
+- name: Copiar servicio de tomcat...
+  template:
+   src: templates/tomcat.service.j2
+   dest: /etc/systemd/system/tomcat.service
+  become: true
+  when: 
+   - ansible_os_family == "RedHat"
+   - ansible_service_mgr == "systemd"
+
+- name: Iniciando y habilitando tomcat...
+  ansible.builtin.command: systemctl start tomcat.service
+  become: true
+  when: ansible_os_family == "RedHat" 

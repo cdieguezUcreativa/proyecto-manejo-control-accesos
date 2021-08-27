@@ -2,9 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\roles",
+    "\\roles\\config-servers",
+    "\\roles\\config-servers\\tasks",
     "\\roles\\server-update",
-    "\\roles\\server-update\\tasks"
+    "\\roles\\server-update\\defaults",
+    "\\roles\\tomcat",
+    "\\roles\\tomcat\\defaults",
+    "\\roles\\tomcat\\handlers",
+    "\\roles\\tomcat\\tasks",
+    "\\roles\\tomcat\\templates"
   ],
-  "SelectedNode": "\\hots_prod",
+  "SelectedNode": "\\roles\\tomcat\\templates\\tomcat.service.j2",
   "PreviewInSolutionExplorer": false
 }
