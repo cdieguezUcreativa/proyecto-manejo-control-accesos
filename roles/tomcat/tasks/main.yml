@@ -18,7 +18,6 @@
   get_url:
    url: "{{ tomcat_archive_url }}"
    dest: "{{ tomcat_archive_dest }}"
-   home: /usr/share/tomcat
   become: true
   when: ansible_os_family == "RedHat"
 
