@@ -1,5 +1,5 @@
 -
- name: Configuracion de Servidores
+ name: Instalacion de PHP
  hosts: all
  roles:
   - php
