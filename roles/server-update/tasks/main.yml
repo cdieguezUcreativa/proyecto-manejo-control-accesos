@@ -2,9 +2,6 @@
   apt:
    name: "*"
    state: latest
-   upgrade: "yes"
-   update_cache: true
-   package: "*"
   become: true
   when: ansible_os_family == "Debian"
   
