@@ -16,7 +16,7 @@
   when: ansible_os_family == "Debian" 
 
   - name: Reiniciando apache httpd...
-    ansible.builtin.servoce:
+    ansible.builtin.service:
      name: apache2
      state: restarted
     become: true
