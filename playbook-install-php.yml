@@ -1,0 +1,5 @@
+-
+ name: Configuracion de Servidores
+ hosts: all
+ roles:
+  - php
