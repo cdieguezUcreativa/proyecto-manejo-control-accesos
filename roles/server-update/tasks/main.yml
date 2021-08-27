@@ -1,5 +1,6 @@
 - name: Actualizar servidores Ubuntu
   apt:
+   update_cache: "yes"
    name: "*"
    state: latest
   become: true
