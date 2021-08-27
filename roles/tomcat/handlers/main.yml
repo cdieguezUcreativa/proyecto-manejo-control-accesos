@@ -1,0 +1,6 @@
+- name: Reiniciando tomcat...
+  ansible.builtin.service:
+   name: tomcat
+   state: restarted
+  become: true
+  when: ansible_os_family == "RedHat" 
